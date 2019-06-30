@@ -40,20 +40,17 @@
   </body>
 
   <script>
-    //  Calculates the tip
+    //  Takes in the bill, tip percent, and how the tip is split and returns the amount rounded to 2 decimal places
     const calculateTip = () => {
       let bill = document.getElementById("bill").value;
       let percent = document.getElementById("percentage").value;
       let split = document.getElementById("split").value;
 
       return parseFloat((bill * (percent / 100)) / split).toFixed(2);
-      // document.getElementById("tip").value = total;
-      // return;
     }
     
+    //  When the form is submitted, the tip is calculated and returned.
     document.getElementById("tipForm").addEventListener("submit", (event) => {
-      alert("Submitted form!");
-      alert(calculateTip());
       document.getElementById("tip").innerText = calculateTip();
       event.preventDefault();
     })
