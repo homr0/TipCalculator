@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tip Calculator</title>
+
+    <link rel="stylesheet" href="public/style.css">
+  </head>
+
+  <body>
+    <main>
+      <h1 id="title">Tip Calculator</h1>
+
+      <label for="bill">Bill: </label>
+      <input type="number" id="bill" name="bill" step="0.01" min="0" required>
+
+      <br>
+
+      <label for="percentage">Tip Percent: </label>
+      <input type="number" id="percentage" name="percentage" default="15" min="0" value="15" required>%
+
+      <br>
+
+      <label for="split">Split Between: </label>
+      <input type="number" id="split" name="split" default="1" min="1" value="1">
+      <label for="split"> <span id="splitters">person</span></label>
+
+      <br>
+
+      <input type="submit" value="Calculate Tip" id="calculate">
+    </main>
+  </body>
+
+  <script>
+    document.getElementById("calculate").addEventListener("click", () => {
+      let bill = document.getElementById("bill").value;
+      let percent = document.getElementById("percentage").value;
+      let split = document.getElementById("split").value;
+
+      console.log(bill + " " + percent + " " + split);
+
+      let total = parseFloat((bill * (percent / 100)) / split).toFixed(2);
+      alert("$" + total);
+    });
+    
+  </script>
+</html>
