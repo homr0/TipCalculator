@@ -24,7 +24,7 @@
     
           <label for="split">Split Between: </label>
           <input type="number" id="split" name="split" default="1" min="1" value="1">
-          <label for="split"> <span id="splitters">person</span></label>
+          <label for="split"> <span class="payPer" id="splitPer">table</span></label>
     
           <br>
     
@@ -32,7 +32,7 @@
       </form>
 
       <div id="result">
-        <h2>The tip you have to pay per <span id="payper">table</span> is</h2>
+        <h2>The tip you have to pay per <span class="payPer" id="splitPay">table</span> is</h2>
 
         $<span id="tip">0.00</span>
       </div>
@@ -53,6 +53,15 @@
     document.getElementById("tipForm").addEventListener("submit", (event) => {
       document.getElementById("tip").innerText = calculateTip();
       event.preventDefault();
-    })
+    });
+
+    //  When the number of people the tip is split between changes, then update the text.
+    document.getElementById("split").addEventListener("change", (event) => {
+      event.preventDefault();
+
+      document.getElementById("splitPer").innerText = (document.getElementById("split").value > 1) ? "people" : "table";
+
+      document.getElementById("splitPay").innerText = (document.getElementById("split").value > 1) ? "person" : "table";
+    });
   </script>
 </html>
